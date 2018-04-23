@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <style>
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+  </style>
+</head>
+
+<body>
+  <!-- create rectangle elements -->
+  <svg>
+    <rect />
+    <rect />
+    <rect />
+    <rect />
+    <rect />
+  </svg>
+  <script>
+    const data = [100,120,53,74,95];
+    const rectWidth = 50,
+          height = 150;
+   d3.selectAll('rect') //select all elements that exist as array of DOM elements
+    	.data(data) //bind data to selection
+    	.attr('x', (d,i) => i *rectWidth) //loop through each rectangle selection and pass in (data, index), assigning the result to the attribute
+    	.attr('y', d => height - d) //without this line rectangles start at top left
+      //non ES6 syntax:
+      // .attr('y', function(d) { console.log('y=', height-d);
+      // return height-d;})
+    	.attr('width', rectWidth)
+    	.attr('height', d => d)
+    	.attr('fill', 'blue')
+    	.attr('stroke', 'white')
+     
+  </script> 
+</body>
